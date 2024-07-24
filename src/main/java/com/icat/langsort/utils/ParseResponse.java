@@ -29,29 +29,38 @@ public class ParseResponse {
 	}
 
 	public static String getLanguageCode(ResponseModel responseModel, String language) {
+		// Get all languages and save. Format is a nested list.
 		List<List<String>> responseArray = responseModel.getAaData();
-		for (List<String> unparsedList : responseArray) {
-
-			if (unparsedList.toString().contains(language)) {
-				Matcher m = LANGUAGE_CODE_PATTERN.matcher(unparsedList.toString());
-
+		// Iterate through each language in languages
+		for (List<String> languageArr : responseArray) {
+			// check if this language is the one the user inputted.
+			if (languageArr.toString().contains(language)) {
+				// Extract the language code
+				Matcher m = LANGUAGE_CODE_PATTERN.matcher(languageArr.toString());
+				// Return the language code
 				while (m.find()) {		
 					System.out.println("Found the language code for " + language);			
 					return m.group("langcode");
 				}
 			}
 		}
-		// Default is American English
+		// Default is English
 		System.out.println("Could not find language, defaulting to English");
 		return "1561";
 	}
 
 	public static Set<String> getVowels(ResponseModel responseModel) {
+		// Get all letters and save. Format is a nested list.
 		List<List<String>> responseArray = responseModel.getAaData();
-		for (List<String> unparsedList : responseArray) {
-			if (unparsedList.toString().contains("vowel")) {
-				Matcher m = VOWEL_PATTERN.matcher(unparsedList.toString());
-
+		// This first part is the same as above, so I have the option to abstract it out
+		// and add a flag for vowels vs language code
+		// Iterate through each language in languages
+		for (List<String> letterArr : responseArray) {
+			// Check if letter is a vowel
+			if (letterArr.toString().contains("vowel")) {
+				// Extract letter
+				Matcher m = VOWEL_PATTERN.matcher(letterArr.toString());
+				// Add vowel to vowel set
 				while (m.find()) {	
 					vowelSet.add(m.group("vowel"));
 				}

@@ -15,12 +15,17 @@ public class Sorter {
 
     public static String sort(String stringToSort, Set<String> vowelSet) {
 
+        // Remove white spaces
         stringToSort = stringToSort.replaceAll("\\s+","");
         
+        // Make lower case
         stringToSort = stringToSort.toLowerCase();
 
+        // Convert to char array
         char[] charArray = stringToSort.toCharArray();
         
+        // Iterate through letters and check if it is in vowel set
+        // If it is, append to vowels. Otherwise, append to consonants
         for (char letter : charArray) {
             if (vowelSet.contains(String.valueOf(letter))) {
                 vowels += letter;
@@ -29,16 +34,14 @@ public class Sorter {
             }
         }
 
-        
-
+        // Convert to char array for sorting
         vowelArr = vowels.toCharArray();
-
         consonantArr = consonants.toCharArray();
 
         Arrays.sort(vowelArr);
         Arrays.sort(consonantArr);
-        Arrays.sort(vowelArr);
 
+        // Reverse vowels with StringBuilder
         String sortedVowels = new String(vowelArr);
         String reversedVowels = new String (new StringBuilder().append(sortedVowels).reverse());
 

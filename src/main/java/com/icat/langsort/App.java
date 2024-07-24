@@ -10,12 +10,17 @@ import com.icat.langsort.utils.Sorter;
 
 public class App 
 {
-    public static int numLanguagesToParse = 10;
+    public static int numLanguagesToParse = 400000;
 
-    public static String language; // defaults to English if can't find
+    public static String language; // defaults to English if can't find this
 
     public static String stringToSort;
 
+    /**
+     * Gets user input
+     * language: the language to look up
+     * stringToSort: the string to sort
+     */
     public static void getInput() { 
         Scanner reader = new Scanner(System.in);  // Reading from System.in
         System.out.println("Enter a language: "); // Try Abua, the unicoding isn't great from Phoible.org
@@ -25,11 +30,17 @@ public class App
 
         reader.close();
     }
+
+    /**
+     * Takes the user input and returns the sorted string
+     * @param args
+     * @throws IOException
+     */
     public static void main( String[] args ) throws IOException
     {
         getInput();
 
-        // Get the numerical for the language on Phoible
+        // Get the numerical code for the language on Phoible
         String getLanguageCodeUrl = HttpGetRequest.createGetLanguageCodeUrl(numLanguagesToParse);
         String langCodeResponse = HttpGetRequest.sendGET(getLanguageCodeUrl);
         ResponseModel langCodeResponseModel = ParseResponse.parseResponse(langCodeResponse, language);

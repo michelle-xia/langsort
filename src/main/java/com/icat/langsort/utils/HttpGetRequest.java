@@ -34,6 +34,7 @@ public class HttpGetRequest {
 		URL obj = new URL(url);
 		HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 		con.setRequestMethod("GET");
+		// Set Headers
         con.setRequestProperty("Accept", ACCEPT);
 		con.setRequestProperty("User-Agent", USER_AGENT);
         con.setRequestProperty("X-Requested-With", X_REQUESTED_WITH);

@@ -1,1 +1,9 @@
 .DS_Store
+hooks/
+info/
+objects/
+target/
+config
+description
+HEAD
+.gitignore.swp
