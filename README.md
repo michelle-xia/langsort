@@ -4,7 +4,7 @@
 This project calls [Phoible](https://phoible.org/) as a database of letters in each language and its classification (consonant or vowel). It takes in a string and a language and outputs the string with vowels for that language sorted by descending order followed by consonants in ascending order.
 
 ## How to use
-This project is run through App.java. It starts by taking an input for language and an input for the string to sort. The program can handle upper or lower case, spaces, and special characters.
+This project is run through `src/main/java/com/icat/langsort/App.java`. It starts by taking an input for language and an input for the string to sort. The program can handle upper or lower case, spaces, and special characters. To default to English, enter a jibberish language. For the other language I want to choose to sort by, French will work as well as Abua.
 
 ## Thought Process
 I decided to use [Phoible](https://phoible.org/) because it was the first online database of many different languages with the classification of each letter. I parsed the data on [Phoible](https://phoible.org/) for the classification of each letter. 
